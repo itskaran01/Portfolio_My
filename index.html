@@ -521,6 +521,56 @@
     .list{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
     .list li{ margin: 6px 0; }
 
+    .tool-grid{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .tool{
+      min-height: 118px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .tool:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,59,59,.34);
+      background: rgba(255,255,255,.06);
+    }
+    .tool-icon{
+      width:34px;
+      height:34px;
+      display:block;
+      object-fit:contain;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.28));
+    }
+    .tool-fallback{
+      width:34px;
+      height:34px;
+      display:none;
+      place-items:center;
+      border-radius: 12px;
+      color: var(--text);
+      font-weight:950;
+      background: linear-gradient(135deg, rgba(255,59,59,.38), rgba(255,122,122,.18));
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .tool strong{
+      display:block;
+      line-height:1.2;
+    }
+    .tool span{
+      color: var(--muted);
+      font-size:12px;
+      font-weight:800;
+    }
+
     .project-top{
       display:flex; align-items:center; justify-content:space-between; gap:12px;
       margin-bottom: 10px;
@@ -569,6 +619,7 @@
     @media (max-width: 900px){
       .hero{ grid-template-columns:1fr; }
       .col-6,.col-4,.col-8{ grid-column: span 12; }
+      .tool-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 720px){
       .links{ display:none; }
@@ -580,6 +631,7 @@
     @media (max-width: 420px){
       .wrap{ width: 94vw; }
       .cta .btn{ flex: 1 1 auto; }
+      .tool-grid{ grid-template-columns: 1fr; }
     }
 
     :focus-visible{ outline: 3px solid var(--ring); outline-offset: 3px; border-radius: 12px; }
@@ -596,12 +648,12 @@
         <div class="lights" aria-hidden="true">
           <span class="light red"></span><span class="light yellow"></span><span class="light green"></span>
         </div>
-        <div class="term-title">boot: redteam-ui</div>
+        <div class="term-title">boot: karan-ui</div>
         <div class="loader-status" id="loaderStatus">Initializing</div>
       </div>
 
       <div class="loader-body" id="loaderBody">
-        <div class="l-line"><span class="p">root@badar</span>:<span class="m">~$</span> init --portfolio</div>
+        <div class="l-line"><span class="p">root@simplistic</span>:<span class="m">~$</span> init --portfolio</div>
         <div class="l-line m" id="typedLine"></div>
         <div class="progress-wrap">
           <div class="progress-row">
@@ -613,7 +665,7 @@
           </div>
           <p class="tiny-hint">Tip: Press <strong>Esc</strong> to skip.</p>
         </div>
-        <div class="l-line"><span class="p">root@badar</span>:<span class="m">~$</span> <span class="cursor" aria-hidden="true"></span></div>
+        <div class="l-line"><span class="p">root@simplistic</span>:<span class="m">~$</span> <span class="cursor" aria-hidden="true"></span></div>
       </div>
     </div>
   </div>
@@ -626,13 +678,14 @@
       <div class="wrap nav-inner">
         <a class="brand" href="#top" aria-label="Go to top">
           <span class="logo" aria-hidden="true"></span>
-          <span>Badar<span style="color:var(--muted); font-weight:850;"> Hacker</span></span>
+          <span>Karan<span style="color:var(--muted); font-weight:850;"> Sunar</span></span>
         </a>
 
         <div class="nav-links">
           <div class="links" aria-label="Primary">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
+            <a href="#tools">Tools</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
           </div>
@@ -652,6 +705,7 @@
         <div class="panelish">
           <a href="#about" class="m-link">About</a>
           <a href="#skills" class="m-link">Skills</a>
+          <a href="#tools" class="m-link">Tools</a>
           <a href="#projects" class="m-link">Projects</a>
           <a href="#contact" class="m-link">Contact</a>
 
@@ -724,33 +778,37 @@
       <section id="about" class="reveal">
         <div class="section-title">
           <h2>About</h2>
-          <p>What I’m building and learning</p>
+          <p>Who I am and where I’m growing</p>
         </div>
 
         <div class="grid">
           <div class="panel col-8">
-            <h3>Red team mindset</h3>
+            <h3>Security learner with a builder mindset</h3>
             <p>
-              I focus on understanding how attacks work end-to-end: discovery, enumeration, exploitation (in safe labs),
-              and writing tools to automate the boring parts. I keep notes and build small projects to prove skills.
+              I’m Karan Sunar, a cybersecurity student focused on practical red-team fundamentals. I learn by building
+              labs, breaking down attack paths, writing small utilities, and turning every experiment into clear notes
+              that can be repeated and improved.
             </p>
             <ul class="list">
-              <li>Interests: reconnaissance, vulnerability assessment, malware fundamentals</li>
-              <li>Strengths: troubleshooting, documentation, repeatable lab setups</li>
-              <li>Goal: Red Team intern / Junior security role</li>
+              <li>Interests: reconnaissance, web security, vulnerability assessment, malware fundamentals</li>
+              <li>Strengths: curiosity, troubleshooting, documentation, repeatable lab setups</li>
+              <li>Goal: Red Team intern, SOC learner, or junior security testing role</li>
             </ul>
           </div>
 
           <div class="panel col-4">
             <h3>Quick facts</h3>
             <ul class="list">
-              <li>🧰 Tools: Nmap, Wireshark, Burp Suite (basic)</li>
-              <li>🐧 Linux: Kali / Ubuntu</li>
-              <li>✍️ Reporting: clear findings + remediation</li>
+              <li>Tools: Nmap, Wireshark, Burp Suite, Python, Docker</li>
+              <li>Linux: Kali, Ubuntu, Arch basics</li>
+              <li>Reporting: clear findings, impact, and remediation steps</li>
             </ul>
             <div class="tags">
               <span class="tag">Recon</span>
               <span class="tag">Port Scanning</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Python</span>
+              <span class="tag">Linux</span>
               <span class="tag">Malware</span>
               <span class="tag">Web Basics</span>
             </div>
@@ -761,13 +819,13 @@
       <section id="skills" class="reveal">
         <div class="section-title">
           <h2>Skills</h2>
-          <p>What I use in labs</p>
+          <p>Core areas I practice</p>
         </div>
 
         <div class="grid">
           <div class="panel col-4">
             <h3>Offensive Security</h3>
-            <p>Enumeration, service discovery, vulnerability scanning, and safe exploitation practice.</p>
+            <p>Reconnaissance, enumeration, vulnerability scanning, and safe exploitation practice in lab environments.</p>
             <div class="tags">
               <span class="tag">Recon</span>
               <span class="tag">OWASP basics</span>
@@ -777,7 +835,7 @@
 
           <div class="panel col-4">
             <h3>Networking</h3>
-            <p>TCP/IP, ports/services, packet analysis, and troubleshooting.</p>
+            <p>TCP/IP fundamentals, ports and services, packet analysis, DNS basics, and network troubleshooting.</p>
             <div class="tags">
               <span class="tag">TCP/IP</span>
               <span class="tag">Wireshark</span>
@@ -787,11 +845,107 @@
 
           <div class="panel col-4">
             <h3>Scripting</h3>
-            <p>Small automation tools for scanning and analysis.</p>
+            <p>Python and Bash scripts for scanning workflows, file checks, parsing output, and repeatable lab tasks.</p>
             <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">Bash</span>
               <span class="tag">Linux</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tools" class="reveal">
+        <div class="section-title">
+          <h2>Tools</h2>
+          <p>Icons for the tools I use</p>
+        </div>
+
+        <div class="panel col-12">
+          <div class="tool-grid" aria-label="Security and development tools">
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/nmap/ffffff" alt="Nmap logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Nm</span>
+              </div>
+              <div><strong>Nmap</strong><span>Network discovery</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/wireshark/1679A7" alt="Wireshark logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Ws</span>
+              </div>
+              <div><strong>Wireshark</strong><span>Packet analysis</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/burpsuite/FF6633" alt="Burp Suite logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Bp</span>
+              </div>
+              <div><strong>Burp Suite</strong><span>Web testing</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/python/3776AB" alt="Python logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Py</span>
+              </div>
+              <div><strong>Python</strong><span>Security scripting</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Dk</span>
+              </div>
+              <div><strong>Docker</strong><span>Lab containers</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/kalilinux/557C94" alt="Kali Linux logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Kl</span>
+              </div>
+              <div><strong>Kali Linux</strong><span>Testing environment</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Gh</span>
+              </div>
+              <div><strong>GitHub</strong><span>Projects and notes</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/git/F05032" alt="Git logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">Gt</span>
+              </div>
+              <div><strong>Git</strong><span>Version control</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <svg class="tool-icon" viewBox="0 0 48 48" role="img" aria-label="Digital forensics icon">
+                  <rect x="8" y="8" width="25" height="32" rx="4" fill="none" stroke="#ff7a7a" stroke-width="3"/>
+                  <path d="M14 16h13M14 23h9M14 30h8" stroke="#eef0ff" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="32" cy="31" r="7" fill="none" stroke="#34d399" stroke-width="3"/>
+                  <path d="M37 36l5 5" stroke="#34d399" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span class="tool-fallback" aria-hidden="true">DF</span>
+              </div>
+              <div><strong>Digital Forensics</strong><span>Evidence analysis</span></div>
+            </div>
+
+            <div class="tool">
+              <div>
+                <img class="tool-icon" src="https://cdn.simpleicons.org/visualstudiocode/007ACC" alt="Visual Studio Code logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';" />
+                <span class="tool-fallback" aria-hidden="true">VS</span>
+              </div>
+              <div><strong>VS Code</strong><span>Code editor</span></div>
             </div>
           </div>
         </div>
@@ -841,13 +995,13 @@
       <section id="contact" class="reveal">
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Simple + professional</p>
+          <p>Let’s connect</p>
         </div>
 
         <div class="grid">
           <div class="panel col-6">
-            <h3>Message</h3>
-            <p style="margin-bottom:12px;">Email or connect on LinkedIn.</p>
+            <h3>Send a message</h3>
+            <p style="margin-bottom:12px;">Reach out for internships, beginner-friendly security work, collaboration, or feedback on my projects.</p>
 
             <div class="cta">
               <a class="btn primary" id="emailBtn" href="mailto:karansunar7053@gmail.com?subject=Red%20Team%20Opportunity&body=Hi%20Karan%2C%0A%0A">Email Me</a>
@@ -861,10 +1015,10 @@
 
           <div class="panel col-6">
             <h3>Availability</h3>
-            <p>I’m open to internships / junior roles in offensive security, vulnerability assessment, and security testing.</p>
+            <p>I’m open to internships, junior security opportunities, CTF teams, and projects where I can keep learning while contributing useful work.</p>
             <ul class="list">
-              <li>Preferred: Red Team Intern / Junior Security Tester</li>
-              <li>Strengths: recon, tooling, documentation</li>
+              <li>Preferred: Red Team Intern, Junior Security Tester, SOC trainee</li>
+              <li>Strengths: recon, tooling, documentation, steady learning</li>
               <li>Timezone: Asia/Kathmandu</li>
             </ul>
           </div>
